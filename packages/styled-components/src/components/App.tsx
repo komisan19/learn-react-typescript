@@ -15,10 +15,22 @@ export const App: React.FC = () => (
       <StyledButton styleType={'long'} as={CustomButton}>
         Custome Button
       </StyledButton>
+      <HogeButton status="distable">test</HogeButton>
     </Container>
   </>
 )
 
+type HogeButtonProps = {
+  status: 'distable' | 'enable'
+}
+
+const HogeButton = styled.button<HogeButtonProps>({
+  width: `400px`,
+  margin: `20px 20px`,
+  }, ({ status }) => ({
+    backgroundColor: status === 'distable' ? 'blue' : 'red',
+  })
+)
 // Style Objects
 const Container = styled.div({
   display: 'flex',
@@ -32,6 +44,7 @@ type StyleMap = {
 const styleMap: StyleMap = {
   default: () => `width: 200px;`,
   long: () => `width: 300px;`,
+  sss: () => `width:100px`
 }
 
 type StyleButtonProps = {
